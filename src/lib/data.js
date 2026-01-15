@@ -40,7 +40,7 @@ export async function obtenerAsignaturas() {
 
     try {
         const asignaturas = await prisma.asignatura.findMany()
-        return grupos
+        return asignaturas
     } catch (error) {
         console.log(error)
     }
@@ -55,7 +55,7 @@ export async function obtenerAsignatura(id) {
                 id: Number(id)
             }
         })
-        return grupo
+        return asignatura
     } catch (error) {
         console.log(error)
     }
