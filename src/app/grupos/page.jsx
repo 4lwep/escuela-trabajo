@@ -15,7 +15,6 @@ async function PaginaGrupos() {
                     promesaGrupos={promesaGrupos}
                 />
             </Suspense>
-
         </div>
     )
 }
