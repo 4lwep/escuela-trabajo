@@ -1,12 +1,12 @@
 import Lista from '@/components/grupos/lista'
-import { obtenerAsignaturas, obtenerGrupos } from '@/lib/data'
+import { obtenerGrupos } from '@/lib/data'
 import { Suspense } from 'react'
 
 
 async function PaginaGrupos() {
 
     const promesaGrupos = obtenerGrupos()
-    const promesaAsignaturas = obtenerAsignaturas()
+
 
     return (
         <div>

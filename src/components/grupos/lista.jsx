@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { use } from 'react'
 
 
-export default function Lista({ promesaGrupos, promesaAsignaturas }) {
+export default function Lista({ promesaGrupos }) {
 
     const grupos = use(promesaGrupos)
-    const asignaturas = use(promesaAsignaturas)
+
 
     return (
         <div className='flex flex-wrap gap-10'>
