@@ -1,16 +1,18 @@
 import { obtenerGrupo } from '@/lib/data'
-import { Suspense } from 'react'
+import { Suspense, use } from 'react'
 
 
 async function PaginaGrupo({ params }) {
     const { id } = await params
+
+    const promesaGrupo = obtenerGrupo(id) // Promesa, no usamos AWAIT
 
     return (
         <div>
             <h1 className='text-4xl'>Grupo</h1>
 
             <Suspense fallback={<p className='text-2xl text-blue-300'>Cargando...</p>}>
-                <Grupo id={id} />
+                <Grupo promesaGrupo={promesaGrupo} />
             </Suspense>
 
         </div>
@@ -23,8 +25,8 @@ export default PaginaGrupo
 
 
 
-async function Grupo({ id }) {
-    const grupo = await obtenerGrupo(id)
+function Grupo({ promesaGrupo }) {
+    const grupo = use(promesaGrupo)
 
     return (
         <>
