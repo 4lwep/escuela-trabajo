@@ -23,7 +23,7 @@ function Item({ estudiante }) {
 
     return (
         <Link href={`/estudiantes/${estudiante.id}`} >
-            <div className='p-4 rounded-lg bg-blue-400'>
+            <div className='p-4 rounded-lg bg-blue-200'>
                 <p>Nombre de estudiante: {estudiante.nombre} </p>
                 <p>Tutor legal: {estudiante.tutor_legal}</p>
                 <p>Fecha de nacimiento: {estudiante.fecha_nacimiento.toLocaleDateString()}</p>

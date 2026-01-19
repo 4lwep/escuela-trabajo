@@ -78,7 +78,7 @@ function Item({ grupo }) {
 
     return (
         <Link href={`/grupos/${grupo.id}`} >
-            <div className='p-4 rounded-lg bg-blue-400'>
+            <div className='p-4 rounded-lg bg-blue-200'>
                 <p>Nombre de grupo: {grupo.nombre} </p>
                 <p>Tutor del grupo: {grupo.tutor}</p>
                 <p>Aula {grupo.aula}</p>

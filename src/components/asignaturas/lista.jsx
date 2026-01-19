@@ -23,7 +23,7 @@ function Item({ asignatura }) {
 
     return (
         <Link href={`/asignaturas/${asignatura.id}`} >
-            <div className='p-4 rounded-lg bg-blue-400'>
+            <div className='p-4 rounded-lg bg-blue-200'>
                 <p>Nombre de asignatura: {asignatura.nombre} </p>
                 <p>Profesor de la asignatura: {asignatura.profesor}</p>
                 <p>Horas semanales: {asignatura.horas_semana}</p>
