@@ -1,6 +1,10 @@
 'use client'
+import { EditIcon, TrashIcon } from 'lucide-react'
 import Link from 'next/link'
 import { use, useState } from 'react'
+import Modal from '@/components/modal'
+import Form from '@/components/grupos/form'
+import { eliminarGrupo, modificarGrupo } from '@/lib/actions'
 
 
 export default function Lista({ promesaGrupos }) {
@@ -77,12 +81,26 @@ export default function Lista({ promesaGrupos }) {
 function Item({ grupo }) {
 
     return (
-        <Link href={`/grupos/${grupo.id}`} >
-            <div className='p-4 rounded-lg bg-blue-200'>
+        <div className='p-4 rounded-lg bg-blue-200'>
+            <Link href={`/grupos/${grupo.id}`} >
                 <p>Nombre de grupo: {grupo.nombre} </p>
                 <p>Tutor del grupo: {grupo.tutor}</p>
                 <p>Aula {grupo.aula}</p>
-            </div>
-        </Link>
+            </Link>
+            <Modal openElement={<EditIcon color='blue' size={32}
+                className='border border-blue-500 rounded-full bg-blue-200 p-2 cursor-pointer hover:text-blue-500 hover:bg-blue-300'
+            />}
+            >   <h2>ACTUALIZAR GRUPO</h2>
+                <Form action={modificarGrupo} grupo={grupo} textSubmit="Actualizar" />
+            </Modal>
+
+            <Modal openElement={<TrashIcon color='red' size={32}
+                className='border border-red-500 rounded-full bg-red-200 p-2 cursor-pointer hover:text-red-500 hover:bg-red-300'
+            />}
+            >
+                <h2>ELIMINAR GRUPO</h2>
+                <Form action={eliminarGrupo} grupo={grupo} disabled={true} textSubmit="Eliminar" />
+            </Modal>
+        </div>
     )
 }

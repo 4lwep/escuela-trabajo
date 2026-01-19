@@ -30,6 +30,11 @@ function Estudiante({ promesaEstudiante }) {
 
     return (
         <>
+            <img
+                src={estudiante.foto || '/usuario.webp'}
+                alt="foto"
+                className='size-24'
+            />
             <p>{estudiante.nombre}</p>
             <p>{estudiante.tutor_legal}</p>
             <p>{estudiante.fecha_nacimiento.toLocaleDateString()}</p>
