@@ -1,52 +1,52 @@
 [
     {
         "nombre": "Juan Pérez",
-        "fecha_nacimiento": "2006-01-01",
+        "fecha_nacimiento": "2006-01-01T00:00:00.000Z",
         "tutor_legal": "José Pérez"
     },
     {
         "nombre": "María López",
-        "fecha_nacimiento": "2006-01-01",
+        "fecha_nacimiento": "2006-01-03T00:00:00.000Z",
         "tutor_legal": "Susana Sánchez"
     },
     {
         "nombre": "Pedro Rodríguez",
-        "fecha_nacimiento": "2006-01-01",
+        "fecha_nacimiento": "2006-01-02T00:00:00.000Z",
         "tutor_legal": "Francisco Rodríguez"
     },
     {
         "nombre": "Ana Muñoz",
-        "fecha_nacimiento": "2006-01-01",
+        "fecha_nacimiento": "2006-01-04T00:00:00.000Z",
         "tutor_legal": "Ana María González"
     },
     {
         "nombre": "Luis Rodríguez",
-        "fecha_nacimiento": "2006-10-09",
+        "fecha_nacimiento": "2006-01-05T00:00:00.000Z",
         "tutor_legal": "Fernando Rodríguez"
     },
     {
         "nombre": "Marina Estepa",
-        "fecha_nacimiento": "2006-10-09",
+        "fecha_nacimiento": "2006-04-06T00:00:00.000Z",
         "tutor_legal": "Elisa Malaga"
     },
     {
         "nombre": "Javier Aguilar",
-        "fecha_nacimiento": "2006-01-01",
+        "fecha_nacimiento": "2006-06-01T00:00:00.000Z",
         "tutor_legal": "Luis Aguilar"
     },
     {
         "nombre": "Esperanza Madrid",
-        "fecha_nacimiento": "2006-10-09",
+        "fecha_nacimiento": "2006-06-09T00:00:00.000Z",
         "tutor_legal": "María José Barros"
     },
     {
         "nombre": "Elena García",
-        "fecha_nacimiento": "2006-10-09",
+        "fecha_nacimiento": "2006-06-10T00:00:00.000Z",
         "tutor_legal": "Luis José García"
     },
     {
         "nombre": "Eva María Gómez",
-        "fecha_nacimiento": "2006-10-09",
+        "fecha_nacimiento": "2006-06-11T00:00:00.000Z",
         "tutor_legal": "Jesús Gómez"
     }
 ]

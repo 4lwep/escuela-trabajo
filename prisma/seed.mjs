@@ -23,11 +23,11 @@ async function main() {
         skipDuplicates: true,
     });
 
-    // console.log("Añadiendo estudiantes...")
-    // await prisma.estudiante.createMany({
-    //     data: estudiantes,
-    //     skipDuplicates: true,
-    // });
+    console.log("Añadiendo estudiantes...")
+    await prisma.estudiante.createMany({
+        data: estudiantes,
+        skipDuplicates: true,
+    });
 
     console.log("Añadiendo asignaturas...")
     await prisma.asignatura.createMany({

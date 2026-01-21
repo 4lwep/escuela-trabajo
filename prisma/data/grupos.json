@@ -1,52 +1,52 @@
 [
     {
-        "nombre": "Grupo 1",
+        "nombre": "ESO1A",
         "tutor": "Eva García",
-        "aula": "Aula 1"
+        "aula": "001"
     },
     {
-        "nombre": "Grupo 2",
+        "nombre": "ESO1B",
         "tutor": "Juan Pérez",
-        "aula": "Aula 2"
+        "aula": "002"
     },
     {
-        "nombre": "Grupo 3",
+        "nombre": "ESO2A",
         "tutor": "María López",
-        "aula": "Aula 3"
+        "aula": "103"
     },
     {
-        "nombre": "Grupo 4",
+        "nombre": "ESO2B",
         "tutor": "Isabel Cañero",
-        "aula": "Aula 4"
+        "aula": "105"
     },
     {
-        "nombre": "Grupo 5",
+        "nombre": "ESO3A",
         "tutor": "Ana Martínez",
-        "aula": "Aula 5"
+        "aula": "206"
     },
     {
-        "nombre": "Grupo 6",
+        "nombre": "ESO3B",
         "tutor": "Roberto Rodríguez",
-        "aula": "Aula 6"
+        "aula": "207"
     },
     {
-        "nombre": "Grupo 7",
+        "nombre": "ESO4A",
         "tutor": "Marina Cuenca",
-        "aula": "Aula 7"
+        "aula": "110"
     },
     {
-        "nombre": "Grupo 8",
+        "nombre": "Bac1A",
         "tutor": "Pedro Rodríguez",
-        "aula": "Aula 8"
+        "aula": "111"
     },
     {
-        "nombre": "Grupo 9",
+        "nombre": "Bac1B",
         "tutor": "Ana Fernández",
-        "aula": "Aula 9"
+        "aula": "112"
     },
     {
-        "nombre": "Grupo 10",
+        "nombre": "Bac2A",
         "tutor": "Juan Jiménez",
-        "aula": "Aula 10"
+        "aula": "109"
     }
 ]
