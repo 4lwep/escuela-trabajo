@@ -116,12 +116,30 @@ export async function insertarEstudiante(formData) {
     const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
     const foto = formData.get('foto')
 
+
+    // ESTUDIANTE - GRUPO (1:N)
+    const grupoId = formData.get('grupoId') && Number(formData.get('grupoId'))  // Este valor puede ser nulo
+
+
+    // ESTUDIANTE - ASIGNATURAS (N:M)
+    // Array con IDs de todas las asignaturas. Formato: [ {id: 1}, {id: 2}, ...]
+    const asignaturasIDs = await prisma.asignatura.findMany({
+        select: { id: true }
+    })
+
+    const connect = asignaturasIDs.filter(asignatura => formData.get(asignatura.id) !== null)
+    const asignaturas = { connect }
+
+
+
     await prisma.estudiante.create({
         data: {
             nombre,
             tutor_legal,
             fecha_nacimiento,
-            foto
+            foto,
+            grupoId,
+            asignaturas
         }
     })
     revalidatePath('/estudiantes')
@@ -136,13 +154,31 @@ export async function modificarEstudiante(formData) {
     const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
     const foto = formData.get('foto')
 
+    // ESTUDIANTE - GRUPO  (1:N)
+    const grupoId = formData.get('grupoId') && Number(formData.get('grupoId'))  // Este valor puede ser nulo
+
+
+    // ESTUDIANTE - ASIGNATURAS  (N:M)
+    // Array con IDs de todas las asignaturas. Formato: [ {id: 1}, {id: 2}, ...]
+    const asignaturasIDs = await prisma.asignatura.findMany({
+        select: { id: true }
+    })
+
+    const connect = asignaturasIDs.filter(asignatura => formData.get(asignatura.id) !== null)
+    const disconnect = asignaturasIDs.filter(asignatura => formData.get(asignatura.id) === null)
+    const asignaturas = { connect, disconnect }
+
+
+
     await prisma.estudiante.update({
         where: { id },
         data: {
             nombre,
             tutor_legal,
             fecha_nacimiento,
-            foto
+            foto,
+            grupoId,
+            asignaturas
         }
     })
     revalidatePath('/estudiantes')

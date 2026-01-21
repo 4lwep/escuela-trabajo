@@ -29,15 +29,17 @@ function Estudiante({ promesaEstudiante }) {
     const estudiante = use(promesaEstudiante)
 
     return (
-        <>
+        <div className='p-4 md:p-8 border border-blue-400'>
             <img
                 src={estudiante.foto || '/usuario.webp'}
                 alt="foto"
                 className='size-24'
             />
-            <p>{estudiante.nombre}</p>
-            <p>{estudiante.tutor_legal}</p>
-            <p>{estudiante.fecha_nacimiento.toLocaleDateString()}</p>
-        </>
+            <p>Nombre: {estudiante.nombre}</p>
+            <p>Tutor Legal: {estudiante.tutor_legal}</p>
+            <p>Fecha Nacimiento: {estudiante.fecha_nacimiento.toLocaleDateString()}</p>
+            <p>Grupo: {estudiante?.grupo?.nombre}</p>
+            <p>Asignaturas: {estudiante?.asignaturas?.map(a => a.nombre).join(', ')}</p>
+        </div>
     )
 }

@@ -29,10 +29,10 @@ function Grupo({ promesaGrupo }) {
     const grupo = use(promesaGrupo)
 
     return (
-        <>
+        <div className='p-4 md:p-8 border border-blue-400'>
             <p>{grupo.nombre}</p>
             <p>{grupo.tutor}</p>
             <p>{grupo.aula}</p>
-        </>
+        </div>
     )
 }

@@ -29,10 +29,10 @@ function Asignatura({ promesaAsignatura }) {
     const asignatura = use(promesaAsignatura)
 
     return (
-        <>
+        <div className='p-4 md:p-8 border border-blue-400'>
             <p>{asignatura.nombre}</p>
             <p>{asignatura.profesor}</p>
             <p>{asignatura.horas_semana}</p>
-        </>
+        </div>
     )
 }
