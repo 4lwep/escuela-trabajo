@@ -29,7 +29,7 @@ export default function Form({ action, grupo, disabled = false, textSubmit = "En
             />
             <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md"
+                className="bg-blue-500 text-white p-2 rounded-md hover:cursor-pointer"
             >
                 {textSubmit}
             </button>

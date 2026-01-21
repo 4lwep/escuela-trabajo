@@ -118,7 +118,7 @@ export async function insertarEstudiante(formData) {
 
 
     // ESTUDIANTE - GRUPO (1:N)
-    const grupoId = formData.get('grupoId') && Number(formData.get('grupoId'))  // Este valor puede ser nulo
+    const grupoId = formData.get('grupoId') ? Number(formData.get('grupoId')) : null  // Este valor puede ser nulo
 
 
     // ESTUDIANTE - ASIGNATURAS (N:M)
@@ -155,7 +155,7 @@ export async function modificarEstudiante(formData) {
     const foto = formData.get('foto')
 
     // ESTUDIANTE - GRUPO  (1:N)
-    const grupoId = formData.get('grupoId') && Number(formData.get('grupoId'))  // Este valor puede ser nulo
+    const grupoId = formData.get('grupoId') ? Number(formData.get('grupoId')) : null  // Este valor puede ser nulo
 
 
     // ESTUDIANTE - ASIGNATURAS  (N:M)
@@ -194,4 +194,6 @@ export async function eliminarEstudiante(formData) {
     })
     revalidatePath('/estudiantes')
 }
+
+
 

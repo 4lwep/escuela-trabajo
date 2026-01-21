@@ -27,7 +27,7 @@ export default function Form({ action, asignatura, disabled = false, textSubmit 
             />
             <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md"
+                className="bg-blue-500 text-white p-2 rounded-md hover:cursor-pointer"
             >
                 {textSubmit}
             </button>

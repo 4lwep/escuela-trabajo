@@ -35,14 +35,17 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                 disabled={disabled}
             />
 
-            {/* {disabled
+
+            {/* Select */}
+            {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
                     <summary>Grupo</summary>
-                    <select className="w-fit p-2 border border-blue-400 rounded-md"
+                    <select className="w-full p-2 border border-blue-400 rounded-md"
                         name="grupoId"
                         key={estudiante?.grupoId}
                         defaultValue={estudiante?.grupoId}
+                        size={4}
                         disabled={disabled}
                     >
                         <option value="">Seleccionar grupo</option>
@@ -53,9 +56,11 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         ))}
                     </select>
                 </details>
-            } */}
+            }
 
-            {disabled
+
+            {/* Radio */}
+            {/* {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
                     <summary>Grupo</summary>
@@ -67,9 +72,10 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         {grupo.nombre}
                     </div>)}
                 </details>
-            }
+            } */}
 
 
+            {/* Checkbox */}
             {disabled
                 ? <p>Asignaturas: {estudiante?.asignaturas?.map(a => a.nombre).join(', ')}</p>
                 : <details>
@@ -91,9 +97,8 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             }
 
 
-            <button
-                type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md"
+            <button type="submit"
+                className="bg-blue-500 text-white p-2 rounded-md hover:cursor-pointer"
             >
                 {textSubmit}
             </button>
