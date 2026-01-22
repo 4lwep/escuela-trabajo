@@ -13,15 +13,18 @@ export async function insertarGrupo(formData) {
     const nombre = formData.get('nombre')
     const tutor = formData.get('tutor')
     const aula = formData.get('aula')
-
-    await prisma.grupo.create({
-        data: {
-            nombre,
-            tutor,
-            aula
-        }
-    })
-    revalidatePath('/grupos')
+    try {
+        await prisma.grupo.create({
+            data: {
+                nombre,
+                tutor,
+                aula
+            }
+        })
+        revalidatePath('/grupos')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -32,15 +35,19 @@ export async function modificarGrupo(formData) {
     const tutor = formData.get('tutor')
     const aula = formData.get('aula')
 
-    await prisma.grupo.update({
-        where: { id },
-        data: {
-            nombre,
-            tutor,
-            aula
-        }
-    })
-    revalidatePath('/grupos')
+    try {
+        await prisma.grupo.update({
+            where: { id },
+            data: {
+                nombre,
+                tutor,
+                aula
+            }
+        })
+        revalidatePath('/grupos')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -48,10 +55,14 @@ export async function modificarGrupo(formData) {
 export async function eliminarGrupo(formData) {
     const id = Number(formData.get('id'))
 
-    await prisma.grupo.delete({
-        where: { id },
-    })
-    revalidatePath('/grupos')
+    try {
+        await prisma.grupo.delete({
+            where: { id },
+        })
+        revalidatePath('/grupos')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -64,14 +75,18 @@ export async function insertarAsignatura(formData) {
     const profesor = formData.get('profesor')
     const horas_semana = Number(formData.get('horas_semana'))
 
-    await prisma.asignatura.create({
-        data: {
-            nombre,
-            profesor,
-            horas_semana
-        }
-    })
-    revalidatePath('/asignaturas')
+    try {
+        await prisma.asignatura.create({
+            data: {
+                nombre,
+                profesor,
+                horas_semana
+            }
+        })
+        revalidatePath('/asignaturas')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -82,15 +97,19 @@ export async function modificarAsignatura(formData) {
     const profesor = formData.get('profesor')
     const horas_semana = Number(formData.get('horas_semana'))
 
-    await prisma.asignatura.update({
-        where: { id },
-        data: {
-            nombre,
-            profesor,
-            horas_semana
-        }
-    })
-    revalidatePath('/asignaturas')
+    try {
+        await prisma.asignatura.update({
+            where: { id },
+            data: {
+                nombre,
+                profesor,
+                horas_semana
+            }
+        })
+        revalidatePath('/asignaturas')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -98,10 +117,14 @@ export async function modificarAsignatura(formData) {
 export async function eliminarAsignatura(formData) {
     const id = Number(formData.get('id'))
 
-    await prisma.asignatura.delete({
-        where: { id },
-    })
-    revalidatePath('/asignaturas')
+    try {
+        await prisma.asignatura.delete({
+            where: { id },
+        })
+        revalidatePath('/asignaturas')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -117,7 +140,7 @@ export async function insertarEstudiante(formData) {
     const foto = formData.get('foto')
 
 
-    // ESTUDIANTE - GRUPO (1:N)
+    // GRUPO - ESTUDIANTE (1:N)
     const grupoId = formData.get('grupoId') ? Number(formData.get('grupoId')) : null  // Este valor puede ser nulo
 
 
@@ -131,18 +154,21 @@ export async function insertarEstudiante(formData) {
     const asignaturas = { connect }
 
 
-
-    await prisma.estudiante.create({
-        data: {
-            nombre,
-            tutor_legal,
-            fecha_nacimiento,
-            foto,
-            grupoId,
-            asignaturas
-        }
-    })
-    revalidatePath('/estudiantes')
+    try {
+        await prisma.estudiante.create({
+            data: {
+                nombre,
+                tutor_legal,
+                fecha_nacimiento,
+                foto,
+                grupoId,
+                asignaturas
+            }
+        })
+        revalidatePath('/estudiantes')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -154,7 +180,7 @@ export async function modificarEstudiante(formData) {
     const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
     const foto = formData.get('foto')
 
-    // ESTUDIANTE - GRUPO  (1:N)
+    // GRUPO - ESTUDIANTE (1:N)
     const grupoId = formData.get('grupoId') ? Number(formData.get('grupoId')) : null  // Este valor puede ser nulo
 
 
@@ -169,19 +195,22 @@ export async function modificarEstudiante(formData) {
     const asignaturas = { connect, disconnect }
 
 
-
-    await prisma.estudiante.update({
-        where: { id },
-        data: {
-            nombre,
-            tutor_legal,
-            fecha_nacimiento,
-            foto,
-            grupoId,
-            asignaturas
-        }
-    })
-    revalidatePath('/estudiantes')
+    try {
+        await prisma.estudiante.update({
+            where: { id },
+            data: {
+                nombre,
+                tutor_legal,
+                fecha_nacimiento,
+                foto,
+                grupoId,
+                asignaturas
+            }
+        })
+        revalidatePath('/estudiantes')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -189,10 +218,14 @@ export async function modificarEstudiante(formData) {
 export async function eliminarEstudiante(formData) {
     const id = Number(formData.get('id'))
 
-    await prisma.estudiante.delete({
-        where: { id },
-    })
-    revalidatePath('/estudiantes')
+    try {
+        await prisma.estudiante.delete({
+            where: { id },
+        })
+        revalidatePath('/estudiantes')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 

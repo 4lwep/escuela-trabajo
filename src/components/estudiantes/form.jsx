@@ -40,7 +40,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
-                    <summary>Grupo</summary>
+                    <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
                     <select className="w-full p-2 border border-blue-400 rounded-md"
                         name="grupoId"
                         key={estudiante?.grupoId}
@@ -63,7 +63,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             {/* {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
-                    <summary>Grupo</summary>
+                    <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
                     {gruposIdNombre?.map((grupo) => <div key={grupo.id}>
                         {estudiante?.grupo?.id == grupo.id
                             ? <input key={`radio-${grupo.id}`} type='radio' name='grupoId' value={grupo.id} defaultChecked />
@@ -79,7 +79,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             {disabled
                 ? <p>Asignaturas: {estudiante?.asignaturas?.map(a => a.nombre).join(', ')}</p>
                 : <details>
-                    <summary>Asignaturas</summary>
+                    <summary>Asignaturas ({estudiante?.asignaturas?.map(a => a.nombre).join(', ')})</summary>
 
                     {asignaturasIdNombre?.map((asignatura) => (
                         <label key={asignatura.id} className='block'>

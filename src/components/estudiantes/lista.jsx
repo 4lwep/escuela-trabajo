@@ -4,7 +4,7 @@ import { use } from 'react'
 import Modal from '@/components/modal'
 import Form from '@/components/estudiantes/form'
 import { eliminarEstudiante, modificarEstudiante } from '@/lib/actions'
-import { FilePenLine, TrashIcon } from 'lucide-react'
+import { FilePenLineIcon, TrashIcon } from 'lucide-react'
 
 
 
@@ -46,7 +46,7 @@ function Item({ estudiante, gruposIdNombre, asignaturasIdNombre }) {
             </Link>
             <div className='flex gap-2 justify-end'>
                 <Modal openElement={
-                    <FilePenLine size={32}
+                    <FilePenLineIcon size={32}
                         className='text-orange-500 border border-orange-500 rounded-full bg-orange-200 p-2 cursor-pointer hover:text-orange-500 hover:bg-orange-300'
                     />}
                 >   <h2 className='text-2xl font-bold'>ACTUALIZAR GRUPO</h2>
