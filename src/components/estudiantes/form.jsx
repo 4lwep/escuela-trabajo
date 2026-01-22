@@ -1,10 +1,27 @@
 
+'use client'
+import { RefreshCwIcon } from "lucide-react"
+import { useActionState, useId, useEffect } from "react"
+import { toast } from "sonner"
+
 
 
 export default function Form({ action, estudiante, gruposIdNombre, asignaturasIdNombre, disabled = false, textSubmit = "Enviar" }) {
+    const formId = useId()
+    const [state, faction, isPending] = useActionState(action, {})
+
+    useEffect(() => {
+        if (state.success) {
+            toast.success(state.success)
+            document.getElementById(formId).closest('dialog').close()
+        }
+        if (state.error) {
+            toast.error(state.error)
+        }
+    }, [state])
 
     return (
-        <form action={action} className="flex flex-col gap-2 border p-4 border-blue-400">
+        <form id={formId} action={faction} className="flex flex-col gap-2 border p-4 border-blue-400" >
             <input type="hidden" name="id" value={estudiante?.id} />
             <input
                 type="text"
@@ -97,12 +114,17 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             }
 
 
-            <button type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md hover:cursor-pointer"
+            <button
+                type="submit"
+                className="flex justify-center items-center bg-blue-500 text-white p-2 rounded-md hover:cursor-pointer disabled:bg-blue-300 disabled:cursor-not-allowed"
+                disabled={isPending}
             >
-                {textSubmit}
+                {isPending
+                    ? <RefreshCwIcon size={20} className="animate-spin" />
+                    : textSubmit
+                }
             </button>
-        </form>
+        </form >
     )
 }
 

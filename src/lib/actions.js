@@ -9,10 +9,12 @@ import { revalidatePath } from "next/cache"
 
 // ------------------------------ GRUPOS ------------------------------
 
-export async function insertarGrupo(formData) {
+export async function insertarGrupo(prevState, formData) {
     const nombre = formData.get('nombre')
     const tutor = formData.get('tutor')
     const aula = formData.get('aula')
+
+
     try {
         await prisma.grupo.create({
             data: {
@@ -22,14 +24,17 @@ export async function insertarGrupo(formData) {
             }
         })
         revalidatePath('/grupos')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        // return { error: error.message }
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function modificarGrupo(formData) {
+export async function modificarGrupo(prevState, formData) {
     const id = Number(formData.get('id'))
     const nombre = formData.get('nombre')
     const tutor = formData.get('tutor')
@@ -45,14 +50,16 @@ export async function modificarGrupo(formData) {
             }
         })
         revalidatePath('/grupos')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function eliminarGrupo(formData) {
+export async function eliminarGrupo(prevState, formData) {
     const id = Number(formData.get('id'))
 
     try {
@@ -60,8 +67,10 @@ export async function eliminarGrupo(formData) {
             where: { id },
         })
         revalidatePath('/grupos')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
@@ -70,7 +79,7 @@ export async function eliminarGrupo(formData) {
 
 // ------------------------------ ASIGNATURAS ------------------------------
 
-export async function insertarAsignatura(formData) {
+export async function insertarAsignatura(prevState, formData) {
     const nombre = formData.get('nombre')
     const profesor = formData.get('profesor')
     const horas_semana = Number(formData.get('horas_semana'))
@@ -84,14 +93,16 @@ export async function insertarAsignatura(formData) {
             }
         })
         revalidatePath('/asignaturas')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function modificarAsignatura(formData) {
+export async function modificarAsignatura(prevState, formData) {
     const id = Number(formData.get('id'))
     const nombre = formData.get('nombre')
     const profesor = formData.get('profesor')
@@ -107,14 +118,16 @@ export async function modificarAsignatura(formData) {
             }
         })
         revalidatePath('/asignaturas')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function eliminarAsignatura(formData) {
+export async function eliminarAsignatura(prevState, formData) {
     const id = Number(formData.get('id'))
 
     try {
@@ -122,8 +135,10 @@ export async function eliminarAsignatura(formData) {
             where: { id },
         })
         revalidatePath('/asignaturas')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
@@ -133,7 +148,7 @@ export async function eliminarAsignatura(formData) {
 
 // ------------------------------ ESTUDIANTES ------------------------------
 
-export async function insertarEstudiante(formData) {
+export async function insertarEstudiante(prevState, formData) {
     const nombre = formData.get('nombre')
     const tutor_legal = formData.get('tutor_legal')
     const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
@@ -166,14 +181,16 @@ export async function insertarEstudiante(formData) {
             }
         })
         revalidatePath('/estudiantes')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function modificarEstudiante(formData) {
+export async function modificarEstudiante(prevState, formData) {
     const id = Number(formData.get('id'))
     const nombre = formData.get('nombre')
     const tutor_legal = formData.get('tutor_legal')
@@ -208,14 +225,16 @@ export async function modificarEstudiante(formData) {
             }
         })
         revalidatePath('/estudiantes')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 
 
 
-export async function eliminarEstudiante(formData) {
+export async function eliminarEstudiante(prevState, formData) {
     const id = Number(formData.get('id'))
 
     try {
@@ -223,8 +242,10 @@ export async function eliminarEstudiante(formData) {
             where: { id },
         })
         revalidatePath('/estudiantes')
+        return { success: 'Operación realizada con éxito' }
     } catch (error) {
         console.log(error)
+        return { error: error.message.split('\n').pop() }
     }
 }
 

@@ -9,7 +9,7 @@ import prisma from '@/lib/prisma'
 export async function obtenerGrupos() {
 
     try {
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+        // await new Promise((resolve) => setTimeout(resolve, 1000))
         const grupos = await prisma.grupo.findMany({
             include: {
                 estudiantes: {
@@ -30,7 +30,7 @@ export async function obtenerGrupos() {
 export async function obtenerGrupo(id) {
 
     try {
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+        // await new Promise((resolve) => setTimeout(resolve, 1000))
         const grupo = await prisma.grupo.findUnique({
             where: {
                 id: Number(id)
