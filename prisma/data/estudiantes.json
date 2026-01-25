@@ -2,51 +2,61 @@
     {
         "nombre": "Juan Pérez",
         "fecha_nacimiento": "2006-01-01T00:00:00.000Z",
-        "tutor_legal": "José Pérez"
+        "tutor_legal": "José Pérez",
+        "foto": "/images/foto_10.webp"
     },
     {
         "nombre": "María López",
         "fecha_nacimiento": "2006-01-03T00:00:00.000Z",
-        "tutor_legal": "Susana Sánchez"
+        "tutor_legal": "Susana Sánchez",
+        "foto": "/images/foto_07.webp"
     },
     {
         "nombre": "Pedro Rodríguez",
         "fecha_nacimiento": "2006-01-02T00:00:00.000Z",
-        "tutor_legal": "Francisco Rodríguez"
+        "tutor_legal": "Francisco Rodríguez",
+        "foto": "/images/foto_11.webp"
     },
     {
         "nombre": "Ana Muñoz",
         "fecha_nacimiento": "2006-01-04T00:00:00.000Z",
-        "tutor_legal": "Ana María González"
+        "tutor_legal": "Ana María González",
+        "foto": "/images/foto_02.webp"
     },
     {
         "nombre": "Luis Rodríguez",
         "fecha_nacimiento": "2006-01-05T00:00:00.000Z",
-        "tutor_legal": "Fernando Rodríguez"
+        "tutor_legal": "Fernando Rodríguez",
+        "foto": "/images/foto_12.webp"
     },
     {
         "nombre": "Marina Estepa",
         "fecha_nacimiento": "2006-04-06T00:00:00.000Z",
-        "tutor_legal": "Elisa Malaga"
+        "tutor_legal": "Elisa Malaga",
+        "foto": "/images/foto_03.webp"
     },
     {
         "nombre": "Javier Aguilar",
         "fecha_nacimiento": "2006-06-01T00:00:00.000Z",
-        "tutor_legal": "Luis Aguilar"
+        "tutor_legal": "Luis Aguilar",
+        "foto": "/images/foto_01.webp"
     },
     {
         "nombre": "Esperanza Madrid",
         "fecha_nacimiento": "2006-06-09T00:00:00.000Z",
-        "tutor_legal": "María José Barros"
+        "tutor_legal": "María José Barros",
+        "foto": "/images/foto_04.webp"
     },
     {
         "nombre": "Elena García",
         "fecha_nacimiento": "2006-06-10T00:00:00.000Z",
-        "tutor_legal": "Luis José García"
+        "tutor_legal": "Luis José García",
+        "foto": "/images/foto_05.webp"
     },
     {
         "nombre": "Eva María Gómez",
         "fecha_nacimiento": "2006-06-11T00:00:00.000Z",
-        "tutor_legal": "Jesús Gómez"
+        "tutor_legal": "Jesús Gómez",
+        "foto": "/images/foto_06.webp"
     }
 ]

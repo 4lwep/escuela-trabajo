@@ -1,10 +1,10 @@
 'use client'
-import { FilePenLineIcon, TrashIcon } from 'lucide-react'
+import { FilePenLineIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import Link from 'next/link'
 import { use, useState } from 'react'
 import Modal from '@/components/modal'
 import Form from '@/components/grupos/form'
-import { eliminarGrupo, modificarGrupo } from '@/lib/actions'
+import { eliminarGrupo, insertarGrupo, modificarGrupo } from '@/lib/actions'
 
 
 export default function Lista({ promesaGrupos }) {
@@ -59,6 +59,16 @@ export default function Lista({ promesaGrupos }) {
                     </select>
                 </fieldset>
 
+            </div>
+
+            <div className='flex justify-end items-center gap-4 pb-4'>
+                <Modal openElement={
+                    <PlusIcon size={32}
+                        className='text-green-500 border border-green-500 rounded-full bg-green-200 p-2 cursor-pointer hover:text-green-500 hover:bg-green-300'
+                    />}>
+                    <h2 className='text-2xl font-bold'>INSERTAR GRUPO</h2>
+                    <Form action={insertarGrupo} textSubmit="Insertar" />
+                </Modal>
             </div>
 
 

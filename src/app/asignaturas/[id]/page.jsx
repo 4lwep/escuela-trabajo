@@ -1,3 +1,4 @@
+import BackButton from '@/components/back-button'
 import { obtenerAsignatura } from '@/lib/data'
 import { Suspense, use } from 'react'
 
@@ -9,7 +10,9 @@ async function PaginaAsignatura({ params }) {
 
     return (
         <div>
-            <h1 className='text-4xl'>Asignatura</h1>
+            <BackButton className="cursor-pointer hover:text-blue-600">
+                <h1 className='text-4xl'>Asignatura</h1>
+            </BackButton>
 
             <Suspense fallback={<p className='text-2xl text-blue-400'>Cargando...</p>}>
                 <Asignatura promesaAsignatura={promesaAsignatura} />

@@ -147,6 +147,7 @@ export async function obtenerEstudiantes() {
                 }
             }
         })
+        console.log(estudiantes)
         return estudiantes
     } catch (error) {
         console.log(error)

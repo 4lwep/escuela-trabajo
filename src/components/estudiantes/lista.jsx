@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { use } from 'react'
 import Modal from '@/components/modal'
 import Form from '@/components/estudiantes/form'
-import { eliminarEstudiante, modificarEstudiante } from '@/lib/actions'
-import { FilePenLineIcon, TrashIcon } from 'lucide-react'
+import { eliminarEstudiante, insertarEstudiante, modificarEstudiante } from '@/lib/actions'
+import { FilePenLineIcon, PlusIcon, TrashIcon } from 'lucide-react'
 
 
 
@@ -18,6 +18,15 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
     return (
 
         <div className="flex flex-col gap-4">
+            <div className='flex justify-end items-center gap-4 pb-4'>
+                <Modal openElement={
+                    <PlusIcon size={32}
+                        className='text-green-500 border border-green-500 rounded-full bg-green-200 p-2 cursor-pointer hover:text-green-500 hover:bg-green-300'
+                    />}>
+                    <h2 className='text-2xl font-bold'>INSERTAR ESTUDIANTE</h2>
+                    <Form action={insertarEstudiante} gruposIdNombre={gruposIdNombre} asignaturasIdNombre={asignaturasIdNombre} textSubmit='Insertar' />
+                </Modal>
+            </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
                 {estudiantes.map((estudiante) =>
