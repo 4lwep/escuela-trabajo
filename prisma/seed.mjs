@@ -11,11 +11,16 @@ async function main() {
     await prisma.estudiante.deleteMany();
     await prisma.grupo.deleteMany();
 
+    // MYSQL
     // await prisma.$executeRaw`ALTER TABLE Asignatura AUTO_INCREMENT = 1;`
     // await prisma.$executeRaw`ALTER TABLE Estudiante AUTO_INCREMENT = 1;`
     // await prisma.$executeRaw`ALTER TABLE Grupo AUTO_INCREMENT = 1;`
 
 
+    // POSTGRESQL
+    // await prisma.$executeRaw`ALTER SEQUENCE "Asignatura_id_seq" RESTART WITH 1;`;
+    // await prisma.$executeRaw`ALTER SEQUENCE "Estudiante_id_seq" RESTART WITH 1;`;
+    // await prisma.$executeRaw`ALTER SEQUENCE "Grupo_id_seq" RESTART WITH 1;`;
 
     console.log("Añadiendo grupos...")
     await prisma.grupo.createMany({

@@ -30,5 +30,5 @@ export default function Filtro({ buscar, setBuscar, propiedad = 'nombre', setPro
                 </select>
             </fieldset>
         </div>
-    );
+    )
 }
