@@ -4,8 +4,7 @@ import { use } from 'react'
 import Modal from '@/components/modal'
 import Form from '@/components/estudiantes/form'
 import { eliminarEstudiante, insertarEstudiante, modificarEstudiante } from '@/lib/actions'
-import { FilePenLineIcon, PlusIcon, TrashIcon } from 'lucide-react'
-
+import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
 
 
 
@@ -19,12 +18,11 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
 
         <div className="flex flex-col gap-4">
             <div className='flex justify-end items-center gap-4 pb-4'>
-                <Modal openElement={
-                    <PlusIcon size={32}
-                        className='text-green-500 border border-green-500 rounded-full bg-green-200 p-2 cursor-pointer hover:text-green-500 hover:bg-green-300'
-                    />}>
+                <Modal openElement={<IconoInsertar />}>
+
                     <h2 className='text-2xl font-bold'>INSERTAR ESTUDIANTE</h2>
                     <Form action={insertarEstudiante} gruposIdNombre={gruposIdNombre} asignaturasIdNombre={asignaturasIdNombre} textSubmit='Insertar' />
+
                 </Modal>
             </div>
 
@@ -54,21 +52,18 @@ function Item({ estudiante, gruposIdNombre, asignaturasIdNombre }) {
                 <p>Grupo: {estudiante.grupo ? estudiante.grupo.nombre : 'Sin grupo'}</p>
             </Link>
             <div className='flex gap-2 justify-end'>
-                <Modal openElement={
-                    <FilePenLineIcon size={32}
-                        className='text-orange-500 border border-orange-500 rounded-full bg-orange-200 p-2 cursor-pointer hover:text-orange-500 hover:bg-orange-300'
-                    />}
-                >   <h2 className='text-2xl font-bold'>ACTUALIZAR GRUPO</h2>
+                <Modal openElement={<IconoModificar />}>
+
+                    <h2 className='text-2xl font-bold'>ACTUALIZAR ESTUDIANTE</h2>
                     <Form action={modificarEstudiante} estudiante={estudiante} gruposIdNombre={gruposIdNombre} asignaturasIdNombre={asignaturasIdNombre} textSubmit="Actualizar" />
+
                 </Modal>
 
-                <Modal openElement={
-                    <TrashIcon size={32}
-                        className='text-red-500 border border-red-500 rounded-full bg-red-200 p-2 cursor-pointer hover:text-red-500 hover:bg-red-300'
-                    />}
-                >
-                    <h2 className='text-2xl font-bold'>ELIMINAR GRUPO</h2>
+                <Modal openElement={<IconoEliminar />} >
+
+                    <h2 className='text-2xl font-bold'>ELIMINAR ESTUDIANTE</h2>
                     <Form action={eliminarEstudiante} estudiante={estudiante} gruposIdNombre={gruposIdNombre} asignaturasIdNombre={asignaturasIdNombre} disabled={true} textSubmit="Eliminar" />
+
                 </Modal>
             </div>
         </div>
