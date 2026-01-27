@@ -1,10 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { use } from 'react'
+import useEstudiantes from '@/hooks/useEstudiantes'
 import Modal from '@/components/modal'
 import Form from '@/components/estudiantes/form'
+import Filtro from '@/components/estudiantes/filtro'
 import { eliminarEstudiante, insertarEstudiante, modificarEstudiante } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
+
 
 
 
@@ -14,9 +17,26 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
     const gruposIdNombre = use(promesaGruposIdNombre)
     const asignaturasIdNombre = use(promesaAsignaturasIdNombre)
 
-    return (
+    const {
+        estudiantesFiltrados,
+        propiedad, setPropiedad,
+        orden, setOrden,
+        buscar, setBuscar
+    } = useEstudiantes(estudiantes);
 
+    return (
         <div className="flex flex-col gap-4">
+
+            {/* Filtrado y ordenación */}
+            <Filtro
+                buscar={buscar}
+                setBuscar={setBuscar}
+                propiedad={propiedad}
+                setPropiedad={setPropiedad}
+                orden={orden}
+                setOrden={setOrden}
+            />
+
             <div className='flex justify-end items-center gap-4 pb-4'>
                 <Modal openElement={<IconoInsertar />}>
 
@@ -27,7 +47,7 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
             </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
-                {estudiantes.map((estudiante) =>
+                {estudiantesFiltrados.map((estudiante) =>
                     <Item
                         estudiante={estudiante}
                         gruposIdNombre={gruposIdNombre}
