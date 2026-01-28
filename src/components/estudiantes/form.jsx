@@ -54,13 +54,13 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
 
 
             {/* Select */}
-            {disabled
+            {/* {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
                     <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
                     <select className="w-full p-2 border border-blue-400 rounded-md"
-                        name="grupoId"
                         key={estudiante?.grupoId}
+                        name="grupoId"                        
                         defaultValue={estudiante?.grupoId}
                         size={4}
                         disabled={disabled}
@@ -73,44 +73,52 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         ))}
                     </select>
                 </details>
-            }
-
-
-            {/* Radio */}
-            {/* {disabled
-                ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
-                : <details>
-                    <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
-                    {gruposIdNombre?.map((grupo) => <div key={grupo.id}>
-                        {estudiante?.grupo?.id == grupo.id
-                            ? <input key={`radio-${grupo.id}`} type='radio' name='grupoId' value={grupo.id} defaultChecked />
-                            : <input type='radio' name='grupoId' value={grupo.id} />
-                        }
-                        {grupo.nombre}
-                    </div>)}
-                </details>
             } */}
 
 
-            {/* Checkbox */}
+            {/* Radio */}
             {disabled
-                ? <p>Asignaturas: {estudiante?.asignaturas?.map(a => a.nombre).join(', ')}</p>
+                ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
-                    <summary>Asignaturas ({estudiante?.asignaturas?.map(a => a.nombre).join(', ')})</summary>
+                    <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
 
-                    {asignaturasIdNombre?.map((asignatura) => (
-                        <label key={asignatura.id} className='block'>
+                    {gruposIdNombre?.map((grupo) =>
+                        <label key={grupo.id} className="block">
                             <input
-                                type='checkbox'
-                                name={asignatura.id}
-                                value={asignatura.id}
-                                defaultChecked={estudiante?.asignaturas?.some(a => a.id == asignatura.id)}
+                                type='radio'
+                                name='grupoId'
+                                value={grupo.id}
+                                defaultChecked={estudiante?.grupo?.id == grupo.id}
                             />
-
-                            {asignatura.nombre}
+                            {grupo.nombre}
                         </label>
-                    ))}
-                </details>
+                    )}
+                </details >
+            }
+
+
+
+
+            {/* Checkbox */}
+            {
+                disabled
+                    ? <p>Asignaturas: {estudiante?.asignaturas?.map(a => a.nombre).join(', ')}</p>
+                    : <details>
+                        <summary>Asignaturas ({estudiante?.asignaturas?.map(a => a.nombre).join(', ')})</summary>
+
+                        {asignaturasIdNombre?.map((asignatura) =>
+                            <label key={asignatura.id} className='block'>
+                                <input
+                                    type='checkbox'
+                                    name={asignatura.id}
+                                    value={asignatura.id}
+                                    defaultChecked={estudiante?.asignaturas?.some(a => a.id == asignatura.id)}
+                                />
+
+                                {asignatura.nombre}
+                            </label>
+                        )}
+                    </details>
             }
 
 
