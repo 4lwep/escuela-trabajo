@@ -24,6 +24,54 @@ export default function Lista({ promesaGrupos }) {
         || grupo.aula.toLowerCase().includes(buscar.toLowerCase())
     )
 
+
+    const Insertar = () =>
+        <Modal openElement={<IconoInsertar />}>
+            <h2 className='text-2xl font-bold'>INSERTAR GRUPO</h2>
+            <Form
+                action={insertarGrupo}
+                textSubmit='Insertar'
+            />
+        </Modal>
+
+
+    const Editar = ({ grupo }) =>
+        <Modal openElement={<IconoModificar />}>
+            <h2 className='text-2xl font-bold'>ACTUALIZAR GRUPO</h2>
+            <Form
+                action={modificarGrupo}
+                textSubmit='Actualizar'
+                grupo={grupo}
+            />
+        </Modal>
+
+
+    const Eliminar = ({ grupo }) =>
+        <Modal openElement={<IconoEliminar />}>
+            <h2 className='text-2xl font-bold'>ELIMINAR GRUPO</h2>
+            <Form
+                action={eliminarGrupo}
+                textSubmit='Eliminar'
+                grupo={grupo}
+                disabled
+            />
+        </Modal>
+
+
+    const Card = ({ grupo, children }) =>
+        <div className='p-4 rounded-lg bg-blue-200'>
+            <Link href={`/grupos/${grupo.id}`} >
+                <p>Nombre de grupo: {grupo.nombre} </p>
+                <p>Tutor del grupo: {grupo.tutor}</p>
+                <p>Aula {grupo.aula}</p>
+            </Link>
+
+            <div className='flex gap-2 justify-end'>
+                {children}
+            </div>
+        </div>
+
+
     return (
         <div className="flex flex-col gap-4">
 
@@ -62,50 +110,18 @@ export default function Lista({ promesaGrupos }) {
             </div>
 
             <div className='flex justify-end items-center gap-4 pb-4'>
-
-                <Modal openElement={<IconoInsertar />}>
-
-                    <h2 className='text-2xl font-bold'>INSERTAR GRUPO</h2>
-                    <Form action={insertarGrupo} textSubmit="Insertar" />
-
-                </Modal>
+                <Insertar />
             </div>
 
 
-            {/* <div className='flex flex-wrap gap-10'> */}
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
-                {grupos.map((grupo) => <Item grupo={grupo} key={grupo.id} />)}
+                {grupos.map((grupo) =>
+                    <Card key={grupo.id} grupo={grupo}>
+                        <Editar grupo={grupo} />
+                        <Eliminar grupo={grupo} />
+                    </Card>)}
             </div>
         </div >
     )
 }
 
-
-function Item({ grupo }) {
-
-    return (
-        <div className='p-4 rounded-lg bg-blue-200'>
-            <Link href={`/grupos/${grupo.id}`} >
-                <p>Nombre de grupo: {grupo.nombre} </p>
-                <p>Tutor del grupo: {grupo.tutor}</p>
-                <p>Aula {grupo.aula}</p>
-            </Link>
-
-            <div className='flex gap-2 justify-end'>
-                <Modal openElement={<IconoModificar />}>
-
-                    <h2 className='text-2xl font-bold'>ACTUALIZAR GRUPO</h2>
-                    <Form action={modificarGrupo} grupo={grupo} textSubmit="Actualizar" />
-
-                </Modal>
-
-                <Modal openElement={<IconoEliminar />}           >
-
-                    <h2 className='text-2xl font-bold'>ELIMINAR GRUPO</h2>
-                    <Form action={eliminarGrupo} grupo={grupo} disabled={true} textSubmit="Eliminar" />
-
-                </Modal>
-            </div>
-        </div>
-    )
-}
