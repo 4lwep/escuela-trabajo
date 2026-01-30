@@ -22,7 +22,8 @@ export async function obtenerGrupos() {
         })
         return grupos
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -41,7 +42,8 @@ export async function obtenerGrupo(id) {
         })
         return grupo
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -57,7 +59,8 @@ export async function obtenerGruposIdNombre() {
         })
         return grupos
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -80,7 +83,8 @@ export async function obtenerAsignaturas() {
         })
         return asignaturas
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -98,7 +102,8 @@ export async function obtenerAsignatura(id) {
         })
         return asignatura
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -114,7 +119,8 @@ export async function obtenerAsignaturasIdNombre() {
         })
         return asignaturas
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -150,7 +156,8 @@ export async function obtenerEstudiantes() {
         console.log(estudiantes)
         return estudiantes
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -169,7 +176,8 @@ export async function obtenerEstudiante(id) {
         })
         return estudiante
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
 
@@ -185,6 +193,7 @@ export async function obtenerEstudiantesIdNombre() {
         })
         return estudiantes
     } catch (error) {
-        console.log(error)
+        console.log(error.message.split('\n').pop())
+        throw new Error(error.message.split('\n').pop())
     }
 }
