@@ -8,6 +8,7 @@ export default function Filtro({ buscar, setBuscar, propiedad = 'nombre', setPro
 
             <fieldset className="flex flex-wrap gap-2 mb-2">
                 <legend className='font-bold'>Filtrar</legend>
+
                 <input
                     type="search"
                     placeholder="Buscar"
@@ -19,15 +20,16 @@ export default function Filtro({ buscar, setBuscar, propiedad = 'nombre', setPro
 
             <fieldset className="flex flex-wrap gap-2 mb-2">
                 <legend className='font-bold'>Ordenar</legend>
-                <select value={orden} onChange={e => setOrden(e.target.value)} className="p-2 border rounded-md w-fit">
-                    <option value="asc">Ascendente</option>
-                    <option value="desc">Descendente</option>
-                </select>
+
                 <select value={propiedad} onChange={e => setPropiedad(e.target.value)} className="p-2 border rounded-md w-fit">
                     <option value="nombre">Nombre</option>
                     <option value="tutor_legal">Tutor legal</option>
                     <option value="fecha_nacimiento">Fecha de nacimiento</option>
                     <option value="grupo.nombre">Grupo</option>
+                </select>
+                <select value={orden} onChange={e => setOrden(e.target.value)} className="p-2 border rounded-md w-fit">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
                 </select>
             </fieldset>
         </div>
