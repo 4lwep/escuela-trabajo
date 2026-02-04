@@ -166,7 +166,6 @@ export async function insertarEstudiante(prevState, formData) {
 
 
 
-
     try {
         await prisma.estudiante.create({
             data: {
@@ -175,7 +174,7 @@ export async function insertarEstudiante(prevState, formData) {
                 fecha_nacimiento,
                 foto,
                 grupoId,
-                asignaturas
+                asignaturas: { connect: asignaturas }
             }
         })
         revalidatePath('/estudiantes')
@@ -200,10 +199,9 @@ export async function modificarEstudiante(prevState, formData) {
 
 
     // ESTUDIANTE - ASIGNATURAS  (N:M)
-    const asignaturasActualizadas = formData
+    const asignaturas = formData
         .getAll('asignaturas[]')
         .map(id => ({ id: Number(id) }))
-
 
 
 
@@ -216,9 +214,7 @@ export async function modificarEstudiante(prevState, formData) {
                 fecha_nacimiento,
                 foto,
                 grupoId,
-                asignaturas: {
-                    set: asignaturasActualizadas
-                }
+                asignaturas: { set: asignaturas }
             }
         })
         revalidatePath('/estudiantes')
