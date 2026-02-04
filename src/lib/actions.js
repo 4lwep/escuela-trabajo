@@ -160,13 +160,11 @@ export async function insertarEstudiante(prevState, formData) {
 
 
     // ESTUDIANTE - ASIGNATURAS (N:M)
-    // Array con IDs de todas las asignaturas. Formato: [ {id: 1}, {id: 2}, ...]
-    const asignaturasIDs = await prisma.asignatura.findMany({
-        select: { id: true }
-    })
-
-    const connect = asignaturasIDs.filter(asignatura => formData.get(asignatura.id) !== null)
-    const asignaturas = { connect }
+    const asignaturas = {
+        connect: formData
+            .getAll('asignaturas[]')
+            .map(id => ({ id: Number(id) }))
+    }
 
 
     try {
@@ -202,7 +200,7 @@ export async function modificarEstudiante(prevState, formData) {
 
 
     // ESTUDIANTE - ASIGNATURAS  (N:M)
-    const asignaturasSeleccionadas = formData
+    const asignaturasActualizadas = formData
         .getAll('asignaturas[]')
         .map(id => ({ id: Number(id) }))
 
@@ -218,7 +216,7 @@ export async function modificarEstudiante(prevState, formData) {
                 foto,
                 grupoId,
                 asignaturas: {
-                    set: asignaturasSeleccionadas
+                    set: asignaturasActualizadas
                 }
             }
         })
