@@ -106,7 +106,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                     : <details>
                         <summary>Asignaturas ({estudiante?.asignaturas?.map(a => a.nombre).join(', ')})</summary>
 
-                        {asignaturasIdNombre?.map((asignatura) =>
+                        {/* {asignaturasIdNombre?.map((asignatura) =>
                             <label key={asignatura.id} className='block'>
                                 <input
                                     type='checkbox'
@@ -117,7 +117,21 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
 
                                 {asignatura.nombre}
                             </label>
+                        )} */}
+
+                        {asignaturasIdNombre?.map((asignatura) =>
+                            <label key={asignatura.id} className='block'>
+                                <input
+                                    type='checkbox'
+                                    name="asignaturas[]"
+                                    value={asignatura.id}
+                                    defaultChecked={estudiante?.asignaturas?.some(a => a.id == asignatura.id)}
+                                />
+
+                                {asignatura.nombre}
+                            </label>
                         )}
+
                     </details>
             }
 
