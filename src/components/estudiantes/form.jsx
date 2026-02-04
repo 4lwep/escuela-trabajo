@@ -53,6 +53,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             />
 
 
+            {/* Usar Select o Radio, pero no ambos a la vez */}
             {/* Select */}
             {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
@@ -102,7 +103,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         <label key={asignatura.id} className='block'>
                             <input
                                 type='checkbox'
-                                name={asignatura.id}
+                                name="asignaturas[]"
                                 value={asignatura.id}
                                 defaultChecked={estudiante?.asignaturas?.some(a => a.id == asignatura.id)}
                             />
