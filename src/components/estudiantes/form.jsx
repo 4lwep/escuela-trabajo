@@ -53,14 +53,15 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
             />
 
 
+            {/* Usar Select o Radio, pero no ambos a la vez */}
             {/* Select */}
-            {/* {disabled
+            {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
                     <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
                     <select className="w-full p-2 border border-blue-400 rounded-md"
                         key={estudiante?.grupoId}
-                        name="grupoId"                        
+                        name="grupoId"
                         defaultValue={estudiante?.grupoId}
                         size={4}
                         disabled={disabled}
@@ -73,11 +74,11 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         ))}
                     </select>
                 </details>
-            } */}
+            }
 
 
             {/* Radio */}
-            {disabled
+            {/* {disabled
                 ? <p>Grupo: {estudiante?.grupo?.nombre}</p>
                 : <details>
                     <summary>Grupo ({estudiante?.grupo?.nombre})</summary>
@@ -94,7 +95,7 @@ export default function Form({ action, estudiante, gruposIdNombre, asignaturasId
                         </label>
                     )}
                 </details >
-            }
+            } */}
 
 
 
