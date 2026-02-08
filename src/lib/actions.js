@@ -154,16 +154,12 @@ export async function insertarEstudiante(prevState, formData) {
     const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
     const foto = formData.get('foto')
 
-
     // GRUPO - ESTUDIANTE (1:N)
     const grupoId = formData.get('grupoId') ? Number(formData.get('grupoId')) : null  // Este valor puede ser nulo
 
 
     // ESTUDIANTE - ASIGNATURAS (N:M)
-    const asignaturas = formData
-        .getAll('asignaturas[]')
-        .map(id => ({ id: Number(id) }))
-
+    const asignaturas = formData.getAll('asignaturas').map(id => ({ id: Number(id) }))
 
 
     try {
@@ -199,10 +195,7 @@ export async function modificarEstudiante(prevState, formData) {
 
 
     // ESTUDIANTE - ASIGNATURAS  (N:M)
-    const asignaturas = formData
-        .getAll('asignaturas[]')
-        .map(id => ({ id: Number(id) }))
-
+    const asignaturas = formData.getAll('asignaturas').map(id => ({ id: Number(id) }))
 
 
     try {

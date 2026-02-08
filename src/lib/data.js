@@ -153,7 +153,7 @@ export async function obtenerEstudiantes() {
                 }
             }
         })
-        console.log(estudiantes)
+        // console.log(estudiantes)
         return estudiantes
     } catch (error) {
         console.log(error.message.split('\n').pop())
