@@ -1,8 +1,10 @@
 'use client'
 import Link from 'next/link'
 import { use } from 'react'
+import useEstudiantes from '@/hooks/useEstudiantes'
 import Modal from '@/components/modal'
 import Form from '@/components/estudiantes/form'
+import Filtro from '@/components/estudiantes/filtro'
 import { eliminarEstudiante, insertarEstudiante, modificarEstudiante } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
 
@@ -15,6 +17,15 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
     const estudiantes = use(promesaEstudiantes)
     const gruposIdNombre = use(promesaGruposIdNombre)
     const asignaturasIdNombre = use(promesaAsignaturasIdNombre)
+
+    const {
+        estudiantesFiltrados,
+        propiedad, setPropiedad,
+        orden, setOrden,
+        buscar, setBuscar
+    } = useEstudiantes(estudiantes);
+
+
 
     const Insertar = () =>
         <Modal openElement={<IconoInsertar />}>
@@ -72,12 +83,22 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
     return (
         <div className="flex flex-col gap-4">
 
+            {/* Filtrado y ordenación */}
+            <Filtro
+                buscar={buscar}
+                setBuscar={setBuscar}
+                propiedad={propiedad}
+                setPropiedad={setPropiedad}
+                orden={orden}
+                setOrden={setOrden}
+            />
+
             <div className='flex justify-end items-center gap-4 pb-4'>
                 <Insertar />
             </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
-                {estudiantes.map((estudiante) =>
+                {estudiantesFiltrados.map((estudiante) =>
                     <Card key={estudiante.id} estudiante={estudiante}>
                         <Editar estudiante={estudiante} />
                         <Eliminar estudiante={estudiante} />

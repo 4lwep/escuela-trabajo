@@ -1,15 +1,25 @@
 'use client'
-import Link from 'next/link'
 import { use } from 'react'
-import Modal from '@/components/modal'
-import Form from '@/components/asignaturas/form'
 import { eliminarAsignatura, insertarAsignatura, modificarAsignatura } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
+import Link from 'next/link'
+import Filtro from '@/components/asignaturas/filtro'
+import Modal from '@/components/modal'
+import Form from '@/components/asignaturas/form'
+import useAsignaturas from '@/hooks/useAsignaturas'
+
 
 
 
 export default function Lista({ promesaAsignaturas }) {
     const asignaturas = use(promesaAsignaturas)
+
+    const {
+        asignaturasFiltradas,
+        propiedad, setPropiedad,
+        orden, setOrden,
+        buscar, setBuscar
+    } = useAsignaturas(asignaturas)
 
 
     const Insertar = () =>
@@ -20,7 +30,6 @@ export default function Lista({ promesaAsignaturas }) {
                 textSubmit="Insertar"
             />
         </Modal>
-
 
     const Editar = ({ asignatura }) =>
         <Modal openElement={<IconoModificar />}>
@@ -62,12 +71,23 @@ export default function Lista({ promesaAsignaturas }) {
 
     return (
         <div className="flex flex-col gap-4">
+
+            {/* Filtrado y ordenación */}
+            <Filtro
+                buscar={buscar}
+                setBuscar={setBuscar}
+                propiedad={propiedad}
+                setPropiedad={setPropiedad}
+                orden={orden}
+                setOrden={setOrden}
+            />
+
             <div className='flex justify-end items-center gap-4 pb-4'>
                 <Insertar />
             </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
-                {asignaturas.map((asignatura) =>
+                {asignaturasFiltradas.map((asignatura) =>
                     <Card key={asignatura.id} asignatura={asignatura}>
                         <Editar asignatura={asignatura} />
                         <Eliminar asignatura={asignatura} />
