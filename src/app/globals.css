@@ -28,3 +28,26 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+input {
+  padding: 8px;
+}
+
+input:focus {
+  outline: 2px solid lightblue;
+  border-radius: 4px;
+}
+
+input[type=number] {
+  text-align: right;
+  width: 100px;
+}
+
+input[type=date] {
+  text-align: right;
+  width: 200px;
+}
+
+details {
+  padding-block: 10px;
+}
