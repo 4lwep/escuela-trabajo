@@ -11,9 +11,7 @@ import { getUserByEmail } from "./data";
 // https://authjs.dev/reference/nextjs#signin
 export async function loginGoogle() {
   try {
-    console.log("hola");
     await signIn("google", { redirectTo: "/dashboard" });
-    console.log("adios");
   } catch (error) {
     throw error;
   }
