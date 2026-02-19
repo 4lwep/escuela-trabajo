@@ -8,11 +8,11 @@ import Modal from '@/components/modal'
 import Form from '@/components/asignaturas/form'
 import useAsignaturas from '@/hooks/useAsignaturas'
 
-
-
-
-export default function Lista({ promesaAsignaturas }) {
+export default function Lista({ promesaSesion, promesaAsignaturas }) {
+    const session = use(promesaSesion)
     const asignaturas = use(promesaAsignaturas)
+
+    const isAdminSession = session.user?.role === "ADMIN";
 
     const {
         asignaturasFiltradas,
@@ -61,9 +61,9 @@ export default function Lista({ promesaAsignaturas }) {
                 <p>Profesor: {asignatura.profesor}</p>
                 <p>Horas semanales: {asignatura.horas_semana}</p>
             </Link>
-            <div className='flex gap-2 justify-end'>
+            {isAdminSession && <div className='flex gap-2 justify-end'>
                 {children}
-            </div>
+            </div>}
         </div>
 
 

@@ -2,11 +2,10 @@ import ListaAsignaturas from '@/components/asignaturas/lista'
 import { obtenerAsignaturas } from '@/lib/data'
 import { Suspense } from 'react'
 import Link from 'next/link'
-
-
+import { auth } from '@/auth'
 
 export default function PaginaAsignaturas() {
-
+    const promesaSession = auth();
     const promesaAsignaturas = obtenerAsignaturas()  // Promesa, no usamos AWAIT
 
     return (
@@ -22,6 +21,7 @@ export default function PaginaAsignaturas() {
 
             <Suspense fallback={<p className='text-2xl text-blue-400'>Cargando...</p>}>
                 <ListaAsignaturas
+                    promesaSesion={promesaSession}
                     promesaAsignaturas={promesaAsignaturas}
                 />
             </Suspense>

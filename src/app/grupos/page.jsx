@@ -3,7 +3,6 @@ import { obtenerGrupos } from '@/lib/data'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
-
 export default function PaginaGrupos() {
 
     const promesaGrupos = obtenerGrupos()  // Promesa, no usamos AWAIT

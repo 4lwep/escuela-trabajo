@@ -3,9 +3,6 @@ import { obtenerAsignaturasIdNombre, obtenerEstudiantes, obtenerGruposIdNombre }
 import { Suspense } from 'react'
 import Link from 'next/link'
 
-
-
-
 export default function PaginaEstudiantes() {
 
     const promesaEstudiantes = obtenerEstudiantes()  // Promesa, no usamos AWAIT
