@@ -10,6 +10,8 @@ import Form from "@/components/users/form";
 import Modal from "@/components/ui/modal";
 import ListaUsuarios from "@/components/users/lista";
 import { Spinner1, Spinner2 } from "@/components/ui/spinners";
+import { logout } from "@/lib/actions";
+import { LockIcon } from "lucide-react";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -22,6 +24,11 @@ export default async function Dashboard() {
     <div>
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+        <form action={logout}>
+          <button className="flex gap-2 justify-center items-center px-4 py-2 rounded-full hover:outline hover:outline-slate-300 cursor-pointer">
+            <LockIcon /> <span className="hidden md:block">Cerrar sesión</span>
+          </button>
+        </form>
       </div>
 
       <Suspense fallback={<Spinner2 />}>
@@ -72,21 +79,3 @@ async function UserInfo({ session }) {
     </div>
   );
 }
-
-const Popover = ({ pedido }) => (
-  <div className="absolute left-10 bottom-1 z-50 mt-2 hidden group-hover:block bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-2xl p-4 min-w-[320px]">
-    <div className="grid grid-cols-[60px_auto] gap-4 mt-4 border border-slate-300 rounded-md p-2">
-      <img src={pedido.cliente.image} alt="" className="size-14" />
-      <div>
-        <p>Cliente: {pedido.cliente.name}</p>
-        <p>Dirección: {pedido.cliente.address}</p>
-        <p>Teléfono: {pedido.cliente.phone}</p>
-      </div>
-    </div>
-
-    <div className="mt-4 border border-slate-300 rounded-md p-2">
-      <p>Repartidor: {pedido.repartidor?.nombre}</p>
-      <p>Tfno repartidor: {pedido.repartidor?.telefono}</p>
-    </div>
-  </div>
-);
