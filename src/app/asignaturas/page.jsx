@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { auth } from '@/auth'
 
 export default function PaginaAsignaturas() {
+    
     const promesaSession = auth();
     const promesaAsignaturas = obtenerAsignaturas()  // Promesa, no usamos AWAIT
 

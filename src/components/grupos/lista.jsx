@@ -8,11 +8,12 @@ import { eliminarGrupo, insertarGrupo, modificarGrupo } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
 import useGrupos from '@/hooks/useGrupos'
 
+export default function Lista({ promesaSesion, promesaGrupos }) {
 
-
-export default function Lista({ promesaGrupos }) {
-
+    const session = use(promesaSesion)
     const grupos = use(promesaGrupos)
+
+    const isAdminSession = session.user?.role === "ADMIN";
 
     const {
         gruposFiltrados,
@@ -63,9 +64,9 @@ export default function Lista({ promesaGrupos }) {
                 <p>Aula {grupo.aula}</p>
             </Link>
 
-            <div className='flex gap-2 justify-end'>
+            {isAdminSession && <div className='flex gap-2 justify-end'>
                 {children}
-            </div>
+            </div>}
         </div>
 
 
@@ -82,9 +83,9 @@ export default function Lista({ promesaGrupos }) {
                 setOrden={setOrden}
             />
 
-            <div className='flex justify-end items-center gap-4 pb-4'>
+            {isAdminSession && <div className='flex justify-end items-center gap-4 pb-4'>
                 <Insertar />
-            </div>
+            </div>}
 
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>

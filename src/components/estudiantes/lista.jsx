@@ -8,15 +8,14 @@ import Filtro from '@/components/estudiantes/filtro'
 import { eliminarEstudiante, insertarEstudiante, modificarEstudiante } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
 
+export default function Lista({ promesaSesion, promesaEstudiantes, promesaGruposIdNombre, promesaAsignaturasIdNombre }) {
 
-
-
-
-export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, promesaAsignaturasIdNombre }) {
-
+    const session = use(promesaSesion)
     const estudiantes = use(promesaEstudiantes)
     const gruposIdNombre = use(promesaGruposIdNombre)
     const asignaturasIdNombre = use(promesaAsignaturasIdNombre)
+
+    const isAdminSession = session.user?.role === "ADMIN";
 
     const {
         estudiantesFiltrados,
@@ -74,9 +73,9 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
                 <p>Fecha de nacimiento: {estudiante.fecha_nacimiento.toLocaleDateString()}</p>
                 <p>Grupo: {estudiante.grupo ? estudiante.grupo.nombre : 'Sin grupo'}</p>
             </Link>
-            <div className='flex gap-2 justify-end'>
+            {isAdminSession && <div className='flex gap-2 justify-end'>
                 {children}
-            </div>
+            </div>}
         </div>
 
 
@@ -93,9 +92,9 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
                 setOrden={setOrden}
             />
 
-            <div className='flex justify-end items-center gap-4 pb-4'>
+            {isAdminSession && <div className='flex justify-end items-center gap-4 pb-4'>
                 <Insertar />
-            </div>
+            </div>}
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
                 {estudiantesFiltrados.map((estudiante) =>
