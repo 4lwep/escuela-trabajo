@@ -143,32 +143,6 @@ export default function Form({
           )}
         </div>
       </form>
-
-      <div className="text-lg flex flex-col gap-2">
-        <h2 className="text-xl font-bold mt-4">Pedidos realizados</h2>
-
-        {!user?.pedidos?.length ? (
-          <p>No se han realizados pedidos aún</p>
-        ) : (
-          user?.pedidos
-            ?.sort((a, b) => b.id - a.id)
-            .map((pedido) => (
-              <div key={pedido.id} className="flex gap-4 items-center">
-                <span>{pedido.id.toString().padStart(4, "_")}</span>
-                <span>
-                  {pedido.fecha_hora.toLocaleDateString("es-ES", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    timeZone: "Europe/Madrid",
-                  })}
-                </span>
-              </div>
-            ))
-        )}
-      </div>
     </>
   );
 }

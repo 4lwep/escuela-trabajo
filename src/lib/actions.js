@@ -80,6 +80,12 @@ export async function login(prevState, formData) {
     };
   }
 
+  if (!user.active) {
+    return {
+      error: "Usuario deshabilitado. Consulte al administrador de esta app.",
+    };
+  }
+
   // Comparamos password
   const matchPassword = user.password
     ? await bcrypt.compare(password, user.password)
