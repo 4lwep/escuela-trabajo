@@ -81,7 +81,9 @@ export async function login(prevState, formData) {
   }
 
   // Comparamos password
-  const matchPassword = await bcrypt.compare(password, user.password);
+  const matchPassword = user.password
+    ? await bcrypt.compare(password, user.password)
+    : false;
 
   if (user && matchPassword) {
     // && user.emailVerified
