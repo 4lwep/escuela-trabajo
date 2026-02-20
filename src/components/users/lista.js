@@ -1,7 +1,7 @@
 "use client";
 
 import Modal from "@/components/ui/modal";
-import { deleteUser, editUser, newUser } from "@/lib/actions/users";
+import { deleteUser, editUser, newUser } from "@/lib/actions";
 import { use } from "react";
 import {
   IconoInsertar,

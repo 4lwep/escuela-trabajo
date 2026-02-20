@@ -3,6 +3,12 @@
 import prisma from "@/lib/prisma";
 
 // -------------------------AUTH CREDENTIALS ------------------------
+
+export async function getUsers() {
+  const users = await prisma.user.findMany();
+  return users;
+}
+
 export async function getUserByEmail(email) {
   const user = await prisma.user.findUnique({
     where: { email },
@@ -12,11 +18,15 @@ export async function getUserByEmail(email) {
 }
 
 export async function getUserById(id) {
-  const user = await prisma.user.findUnique({
-    where: { id },
-  });
-
-  return user;
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+    return user;
+  } catch (error) {
+    console.log(error.message.split("\n").pop());
+    throw new Error(error.message.split("\n").pop());
+  }
 }
 
 // ------------------------- GRUPOS -------------------------

@@ -1,12 +1,10 @@
 import { auth } from "@/auth";
-import { logout } from "@/lib/actions";
-import { LockIcon } from "lucide-react";
 import { redirect } from "next/navigation";
-import { Suspense, use } from "react";
-import { obtenerUsuarios } from "@/lib/data/users";
-import { obtenerUsuarioPorId } from "@/lib/data/users";
-import { IconoEliminar, IconoModificar } from "@/components/ui/icons";
-import { editUser } from "@/lib/actions/users";
+import { Suspense } from "react";
+import { getUsers } from "@/lib/data";
+import { getUserById } from "@/lib/data";
+import { IconoModificar } from "@/components/ui/icons";
+import { editUser } from "@/lib/actions";
 import { labelModificar } from "@/components/ui/labels";
 import Form from "@/components/users/form";
 import Modal from "@/components/ui/modal";
@@ -34,10 +32,7 @@ export default async function Dashboard() {
         <>
           <h1 className="text-xl font-bold mt-15">Lista de usuarios</h1>
           <Suspense fallback={<Spinner1 />}>
-            <ListaUsuarios
-              session={session}
-              promesaUsuarios={obtenerUsuarios()}
-            />
+            <ListaUsuarios session={session} promesaUsuarios={getUsers()} />
           </Suspense>
         </>
       )}
@@ -46,7 +41,7 @@ export default async function Dashboard() {
 }
 
 async function UserInfo({ session }) {
-  const usuario = await obtenerUsuarioPorId(session.user.id);
+  const usuario = await getUserById(session.user.id);
   const isAdminSession = session.user.role === "ADMIN";
 
   return (
