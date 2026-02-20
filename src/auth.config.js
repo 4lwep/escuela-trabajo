@@ -6,9 +6,9 @@ import { getUserByEmail } from "@/lib/data";
 
 export default {
   providers: [
-    Google,
-    GitHub,
-    Discord,
+    Google({ allowDangerousEmailAccountLinking: true }),
+    GitHub({ allowDangerousEmailAccountLinking: true }),
+    Discord({ allowDangerousEmailAccountLinking: true }),
     Credentials({
       async authorize(credentials) {
         console.log("AUTHORIZE");
